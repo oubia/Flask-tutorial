@@ -1,10 +1,55 @@
-{% extends 'base.html' %} {% block title %}Home Page{% endblock%} {% block content %}
+{% extends "base.html" %} {% block content %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<div class="card " style="align-items:center;">
-    <h1>Testooo</h1>
-
-    <div class=" body-card" style="align-items: center;flex-wrap:wrap;">
-        {% include "form.html" %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./main.css')  }}">
+<script src="{{url_for('static',filename='./main.js')  }}"></script>
+<div class="card" style="align-items:center;">
+    <div class="card-body" style="align-items: center;flex-wrap:wrap;">
+        <form action="/" method="POST">
+            <input type="hidden" name="form-name" value="Add_form">
+            <label for="designation"> designation</label>
+            <p class="content-item">
+                <input type="text" name="designation"> </p>
+            <label for="Quantity">Quantity</label>
+            <p class="content-item">
+                <input type="number" min="1" name="Quantity"> </p>
+            <label for="Price">Price</label>
+            <p class="content-item">
+                <input type="number" min="1.0" name="Price">
+            </p>
+            <p class="content-item">
+                <p><input class="btn btn-primary" type="submit" value="Add"> </p>
+            </p>
+        </form>
+        <!-- delete form -->
+        <form action="" method="post">
+            <input type="hidden" name="form-name" value="Delete_form">
+            <select type="text" name="select_Delete_item">
+                    {% for i in items %}
+                    <option value="{{i.designation}}">{{i.designation}}</option>
+                    {% endfor %}
+                </select> </p>
+            <p class="content-item">
+                <p><input class="btn btn-danger" type="submit" value="Delete"> </p>
+            </p>
+        </form>
+        <!-- Update form -->
+        <form action="" method="post">
+            <input type="hidden" name="form-name" value="Update_form">
+            <label for="designation">Update item</label>
+            <p class="content-item">
+                <select class="select" type="text" name="select_Update_item">
+                    {% for i in items %}
+                    <option value="{{i.designation}}">{{i.designation}}</option>
+                    {% endfor %}
+                </select> </p>
+            <label for="Quantity">Quantity</label>
+            <p class="content-item">
+                <input type="number" min="0" name="Update_Quantity"> </p>
+            <p class="content-item">
+                <p><input class="btn btn-success" type="submit" value="Update"> </p>
+            </p>
+        </form>
     </div>
 </div>
-{% endblock%}
+
+{% endblock %}
