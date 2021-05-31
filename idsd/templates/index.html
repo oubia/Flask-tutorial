@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <title>IDSD1</title>
+</head>
+<body style="background-color: rgb(226, 216, 216);">
+    <form action="/" method="Post" style="width: 50%; position: absolute; right: 10px; top: 10px;" >
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+        </div>
+        
+        <button type="submit"  value="submit" class="btn btn-primary">Add</button>
+        <br><hr><hr>
+      </form>
+
+
+      <form action="/delete" method="Post" style="width: 50%; position: absolute; right: 10px; top: 215px;" >
+        <br>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input name="emaild" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        
+        <button type="submit"  value="submit" class="btn btn-primary">Delete</button>
+      </form>
+
+      <form action="/update" method="Post" style="width: 50%; position: absolute; right: 10px; top: 380px;" >
+        <hr><hr>
+        <label for="pet-select">Choose a pet:</label>
+
+        <select name="mailUser" id="pet-select">
+          {% if comptes %}
+            {% for e in comptes %}
+                <option value="{{e.email}}">{{e.email}}</option>
+            {% endfor %}
+          {% endif %}
+            
+        </select>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+        </div>
+        
+        <button type="submit"  value="submit" class="btn btn-primary">Update</button>
+        <br><hr>
+      </form>
+
+      <br>
+      <div>
+        {% if comptes %}
+          {% for e in comptes %}
+            <div style="border: 2px solid baalck; margin: 10px; padding: 10px; position: absolute; left: 10px;">
+              <p style="font-size: 20; font-family: 'Courier New', Courier, monospace;">
+                email = {{e.email}}  password = {{e.password}}
+              </p>
+            </div>
+            <br>
+          {% endfor %}
+        {% endif %}
+      </div>
+</body>
+</html>
